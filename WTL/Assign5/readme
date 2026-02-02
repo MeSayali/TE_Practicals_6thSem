@@ -1,0 +1,7 @@
+pict@pict-OptiPlex-SFF-Plus-7010:~$ cd ~/Downloads/apache-tomcat-9.0.113/webapps/ROOT/WEB-INF/classes
+pict@pict-OptiPlex-SFF-Plus-7010:~/Downloads/apache-tomcat-9.0.113/webapps/ROOT/WEB-INF/classes$ ls
+Simple.java
+pict@pict-OptiPlex-SFF-Plus-7010:~/Downloads/apache-tomcat-9.0.113/webapps/ROOT/WEB-INF/classes$ javac -cp "/home/pict/Downloads/apache-tomcat-9.0.113/lib/servlet-api.jar" Simple.java
+pict@pict-OptiPlex-SFF-Plus-7010:~/Downloads/apache-tomcat-9.0.113/webapps/ROOT/WEB-INF/classes$ 
+
+
