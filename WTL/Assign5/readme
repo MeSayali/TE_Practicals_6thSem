@@ -19,4 +19,56 @@ sh startup.sh
 sh shutdown.sh
 
 
+database connectivity
+sudo mysql
+
+mysql> CREATE USER 'ebookuser'@'localhost' IDENTIFIED WITH mysql_native_password BY 'ebook123';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> GRANT ALL PRIVILEGES ON ebookdb.* TO 'ebookuser'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+
+mysql> CREATE DATABASE ebookdb;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> USE ebookdb;
+Database changed
+mysql> CREATE TABLE ebookshop (
+    ->     book_id INT PRIMARY KEY,
+    ->     book_title VARCHAR(100),
+    ->     book_author VARCHAR(100),
+    ->     book_price FLOAT,
+    ->     quantity INT
+    -> );
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_ebookdb |
++-------------------+
+| ebookshop         |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO ebookshop VALUES
+    -> (1, 'Java Programming', 'James Gosling', 450, 10),
+    -> (2, 'Python Basics', 'Guido van Rossum', 500, 8),
+    -> (3, 'Web Technologies', 'Tim Berners-Lee', 550, 5);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM ebookshop;
++---------+------------------+------------------+------------+----------+
+| book_id | book_title       | book_author      | book_price | quantity |
++---------+------------------+------------------+------------+----------+
+|       1 | Java Programming | James Gosling    |        450 |       10 |
+|       2 | Python Basics    | Guido van Rossum |        500 |        8 |
+|       3 | Web Technologies | Tim Berners-Lee  |        550 |        5 |
++---------+------------------+------------------+------------+----------+
+3 rows in set (0.00 sec)
+
+
+
+
 
