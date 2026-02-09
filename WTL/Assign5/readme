@@ -2,6 +2,21 @@ pict@pict-OptiPlex-SFF-Plus-7010:~$ cd ~/Downloads/apache-tomcat-9.0.113/webapps
 pict@pict-OptiPlex-SFF-Plus-7010:~/Downloads/apache-tomcat-9.0.113/webapps/ROOT/WEB-INF/classes$ ls
 Simple.java
 pict@pict-OptiPlex-SFF-Plus-7010:~/Downloads/apache-tomcat-9.0.113/webapps/ROOT/WEB-INF/classes$ javac -cp "/home/pict/Downloads/apache-tomcat-9.0.113/lib/servlet-api.jar" Simple.java
-pict@pict-OptiPlex-SFF-Plus-7010:~/Downloads/apache-tomcat-9.0.113/webapps/ROOT/WEB-INF/classes$ 
+
+
+Simple.java 
+/ROOT/WEB-INF/classes
+
+web.xml
+/ROOT/WEB_INF
+
+welcome.html
+/webapps/ROOT
+
+/apache-Tomact/bin
+openit in terminal to start the tomcat server
+sh startup.sh
+sh shutdown.sh
+
 
 
