@@ -1,0 +1,169 @@
+pict@pict-OptiPlex-SFF-Plus-7010:~$ ssh hadoop@10.10.15.238
+The authenticity of host '10.10.15.238 (10.10.15.238)' can't be established.
+ED25519 key fingerprint is SHA256:KGoVpfKiK9INTJxieMt7I5cPoNVRIoq70RHSQR/mz/Q.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.15.238' (ED25519) to the list of known hosts.
+hadoop@10.10.15.238's password: 
+Permission denied, please try again.
+hadoop@10.10.15.238's password: 
+Last failed login: Fri Apr 10 09:30:19 IST 2026 from 10.10.13.177 on ssh:notty
+There was 1 failed login attempt since the last successful login.
+Last login: Fri Apr 10 09:30:04 2026 from 10.10.13.50
+
+
+[hadoop@dbsl-10 ~]$ ls
+
+
+[hadoop@dbsl-10 ~]$ mkdir 31453
+
+[hadoop@dbsl-10 ~]$ cd 31453
+[hadoop@dbsl-10 31453]$ ls
+[hadoop@dbsl-10 31453]$ nano data.txt
+
+ Hello Welcome to PICT
+Welcome to Hadoop
+I like Hadoop
+Welcome
+
+            
+            
+[hadoop@dbsl-10 31453]$ nano WordCount.java
+
+import java.io.IOException;
+import java.util.StringTokenizer;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+public class WordCount {
+
+    public static class TokenizerMapper
+            extends Mapper<Object, Text, Text, IntWritable> {
+
+        private final static IntWritable one = new IntWritable(1);
+        private Text word = new Text();
+
+        public void map(Object key, Text value, Context context)
+                throws IOException, InterruptedException {
+
+            StringTokenizer itr = new StringTokenizer(value.toString());
+
+            while (itr.hasMoreTokens()) {
+                word.set(itr.nextToken());
+                context.write(word, one);
+            }
+        }
+    }
+
+    public static class IntSumReducer
+            extends Reducer<Text, IntWritable, Text, IntWritable> {
+
+        private IntWritable result = new IntWritable();
+
+        public void reduce(Text key, Iterable<IntWritable> values,
+                           Context context)
+                throws IOException, InterruptedException {
+
+            int sum = 0;
+
+            for (IntWritable val : values) {
+                sum += val.get();
+            }
+
+            result.set(sum);
+            context.write(key, result);
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        Configuration conf = new Configuration();
+        Job job = Job.getInstance(conf, "word count");
+
+        job.setJarByClass(WordCount.class);
+        job.setMapperClass(TokenizerMapper.class);
+        job.setReducerClass(IntSumReducer.class);
+
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(IntWritable.class);
+
+        FileInputFormat.addInputPath(job, new Path(args[0]));
+        FileOutputFormat.setOutputPath(job, new Path(args[1]));
+
+        System.exit(job.waitForCompletion(true) ? 0 : 1);
+    }
+}
+
+[hadoop@dbsl-10 31453]$ nano data.txt
+[hadoop@dbsl-10 31453]$ ls
+data.txt  WordCount.java
+
+
+[hadoop@dbsl-10 31453]$ javac -classpath `hadoop classpath` WordCount.java
+
+[hadoop@dbsl-10 31453]$ jar cf WordCount.jar WordCount*.class
+
+[hadoop@dbsl-10 31453]$ ls
+ data.txt  'WordCount$IntSumReducer.class'  'WordCount$TokenizerMapper.class'   WordCount.class   WordCount.jar   WordCount.java
+ 
+[hadoop@dbsl-10 31453]$ start-dfs.sh
+Starting namenodes on [localhost]
+localhost: namenode is running as process 7363.  Stop it first and ensure /tmp/hadoop-hadoop-namenode.pid file is empty before retry.
+Starting datanodes
+localhost: datanode is running as process 7564.  Stop it first and ensure /tmp/hadoop-hadoop-datanode.pid file is empty before retry.
+Starting secondary namenodes [dbsl-10]
+2026-04-10 09:38:08,759 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[hadoop@dbsl-10 31453]$ start-yarn.sh
+Starting resourcemanager
+resourcemanager is running as process 8079.  Stop it first and ensure /tmp/hadoop-hadoop-resourcemanager.pid file is empty before retry.
+Starting nodemanagers
+localhost: nodemanager is running as process 8212.  Stop it first and ensure /tmp/hadoop-hadoop-nodemanager.pid file is empty before retry.
+
+[hadoop@dbsl-10 31453]$ jps
+7363 NameNode
+19892 Jps
+8212 NodeManager
+6117 SecondaryNameNode
+7564 DataNode
+8079 ResourceManager
+[hadoop@dbsl-10 31453]$ hdfs mkdir hdfs://localhost:9000/31453
+[hadoop@dbsl-10 31453]$ hdfs mkdir hdfs://localhost:9000/31453/input
+[hadoop@dbsl-10 31453]$ hdfs put data.txt hdfs://localhost:9000/31453/input
+[hadoop@dbsl-10 31453]$ hadoop jar WordCount.jar WordCount /31446/input /31453/output
+2026-04-10 09:41:04,355 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2026-04-10 09:41:04,836 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at localhost/127.0.0.1:8032
+2026-04-10 09:41:05,084 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+2026-04-10 09:41:05,166 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/hadoop/.staging/job_1775793239430_0007
+
+[hadoop@dbsl-10 31453]$ hadoop jar WordCount.jar WordCount /31453/input /31453/output
+2026-04-10 09:41:13,406 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2026-04-10 09:41:13,898 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at localhost/127.0.0.1:8032
+
+[hadoop@dbsl-10 31453]$ hdfs ls hdfs://localhost:9000/31453/output
+_SUCCESS
+part-r-00000
+[hadoop@dbsl-10 31453]$ hdfs cat hdfs://localhost:9000/31453/output/part-r-00000
+Hadoop	2
+Hello	1
+I	1
+PICT	1
+To	1
+Welcome	3
+like	1
+to	1
+
+
+
+
+
