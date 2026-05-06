@@ -1,0 +1,418 @@
+[TE@dbsl-02 ~]$ ssh hadoop@10.10.15.238
+hadoop@10.10.15.238's password: 
+Last login: Mon Apr  6 12:56:48 2026 from 10.10.15.54
+ 
+
+[hadoop@dbsl-10 ~]$ ls
+31104_hadoop        Assignment11$TokenizerMapper.class
+31107               Assignment11$IntSumReducer.class
+31108               BubbleSort.scalascalac BubbleSort.scala
+31111               LinearSearchSpark.scala
+31145               LinearSearchSpark$.class
+31149               LinearSearchSpark.class
+31163               SimpleWeather$MyMapper.class
+31165               SimpleWeather$MyReducer.class
+31173               WeatherAnalysis$Map.class
+31176               WeatherAnalysis$Reduce.class
+31186               WeatherAverage$WeatherMapper.class
+31206               WeatherAverage$WeatherReducer.class
+31217               WeatherDataAverage$TokenizerMapper.class
+31245               WeatherDataAverage$FloatAverageReducer.class
+31249               WordCount$TokenizerMapper.class
+31250               WordCount$IntSumReducer.class
+31252               WeatherNew$MyMapper.class
+31252_hadoop        WeatherNew$MyReducer.class
+31257               WeatherNew.class
+31258               WeatherNew.java
+31259               WeatherDataAverage.class
+31260               WeatherDataAverage.java
+31261               WeatherDataAverage.jar
+31450               weathernew.jar
+50_311              weather_average.jar
+apps                WeatherAnalysis.class
+Desktop             WeatherAnalysis.java
+Documents           WeatherAverage.class
+Downloads           WeatherAverage.java
+Music               WeatherAvg$AvgMapper.class
+Pictures            WeatherAvg$AvgReducer.class
+Public              WeatherAvg.class
+Templates           WeatherAvg.jar
+Videos              WeatherAvg.java
+hadoop              WeatherAvg.javax
+hdfs                WeatherAvg.javaxk
+input_dir           weather_classes
+output              weather.csv
+output2             weather_input
+output_dir          weather.jar
+output_new          weather_output
+output_simple       weather_project
+weather_input       weather.txt
+gugugaga            WordCount.class
+TE31204             WordCount.jar
+hadoopdata          WordCount.java
+assignment11        wordcount_classes
+Assignment11        word_count.txt
+Assignment11.class  SimpleWeather.class
+assignment11.jar    SimpleWeather.java
+Assignment11.java   SimpleWeather.class
+Assignment12        sample_weather.txt
+assignment.txt      sample_weather_better.txt
+BubbleSort$.class   simple.jar
+BubbleSort.class    wc.jar
+BubbleSort1.scala   LinearSearchSpark.jar
+BubbleSortApp$.class data31111.txt
+BubbleSortApp.class dataasst.txt
+BubbleSortApp.scala data.txt
+Func.java.save      dune.txt
+hadoop-3.4.3.tar.gz input.txt
+
+
+[hadoop@dbsl-10 ~]$ cd $HADOOP_HOME/sbin
+[hadoop@dbsl-10 sbin]$ ls
+31102  31162  31201           31252                    start-all.cmd
+31106  31163  31205           31254                    start-all.sh
+31110  31164  31207           31441                    start-balancer.sh
+31111  31167  31208           31443                    start-dfs.cmd
+31112  31168  31209           31446                    start-dfs.sh
+31113  31169  31210           31446_B12                start-secure-dns.sh
+31114  31170  31211           31450                    start-yarn.cmd
+31115  31171  31211_12        31451                    start-yarn.sh
+31116  31172  31211_assign12  31452                    stop-all.cmd
+31119  31173  31212           31456                    stop-all.sh
+31122  31174  31213           50_311                   stop-balancer.sh
+31145  31175  31214           data.txt                 stop-dfs.cmd
+31146  31176  31217           distribute-exclude.sh    stop-dfs.sh
+31147  31177  31218           FederationStateStore     stop-secure-dns.sh
+31149  31178  31219           hadoop                   stop-yarn.cmd
+31151  31180  31220           hadoop-3.4.3.tar.gz      stop-yarn.sh
+31152  31182  31221           hadoop-daemon.sh         workers.sh
+31154  31183  31222           hadoop-daemons.sh        yarn-daemon.sh
+31156  31184  31245           httpfs.sh                yarn-daemons.sh
+31158  31186  31247           kms.sh
+31159  31187  31248           mr-jobhistory-daemon.sh
+31160  31188  31251           refresh-namenodes.sh
+
+
+[hadoop@dbsl-10 sbin]$ mkdir 31446_12
+[hadoop@dbsl-10 sbin]$ cd 31446_12
+[hadoop@dbsl-10 31446_12]$ ls
+
+
+[hadoop@dbsl-10 31446_12]$ nano input.txt
+51.75 1006.3 71.6
+54.74 1006.3 71.6
+50.59 1006.3 71.6
+51.67 1006.3 71.6
+65.67 1006.3 71.6
+55.37 1006.3 71.6
+49.26 1006.3 71.6
+55.44 1006.3 71.6
+64.05 1006.3 71.6
+68.77 1006.3 71.6
+48.93 1006.3 71.6
+65.37 1006.3 71.6
+69.45 1006.3 71.6
+52.91 1006.3 71.6
+53.69 1006.3 71.6
+53.3 1006.3 71.6
+66.17 1006.3 71.6
+53.83 1006.3 71.6
+50.54 1006.3 71.6
+50.27 1006.3 71.6
+59.08 1006.3 71.6
+53.05 1006.3 71.6
+57.97 1006.3 71.6
+48.23 1006.3 71.6
+47.16 1003.2 53.6
+69.72 1003.2 53.6
+62.71 1003.2 53.6
+46.34 1003.2 53.6
+53.15 1003.2 53.6
+64.59 1003.2 53.6
+58.26 1003.2 53.6
+53.27 1003.2 53.6
+43.68 1003.2 53.6
+65.7 1003.2 53.6
+66.27 1003.2 53.6
+53.05 1003.2 53.6
+68.45 1003.2 53.6
+49.03 1003.2 53.6
+66.59 1003.2 53.6
+63.12 1003.2 53.6
+49.13 1003.2 53.6
+62.85 1003.2 53.6
+64.67 1003.2 53.6
+55.73 1003.2 53.6
+56.42 1003.2 53.6
+53.83 1003.2 53.6
+45.14 1003.2 53.6
+68.18 1003.2 53.6
+48.41 1008.7 62.78
+55.12 1008.7 62.78
+46.48 1008.7 62.78
+54.99 1008.7 62.78
+50.62 1008.7 62.78
+55.81 1008.7 62.78
+59.28 1008.7 62.78
+60.55 1008.7 62.78
+52.62 1008.7 62.78
+62.27 1008.7 62.78
+49.9 1008.7 62.78
+45.12 1008.7 62.78
+62.85 1008.7 62.78
+50.9 1008.7 62.78
+49.73 1008.7 62.78
+47.28 1008.7 62.78
+46.67 1008.7 62.78
+49.48 1008.7 62.78
+59.53 1008.7 62.78
+59.49 1008.7 62.78
+52.25 1008.7 62.78
+57.67 1008.7 62.78
+54.04 1008.7 62.78
+58.76 1008.7 62.78
+48.6 1020.0 51.98
+50.54 1020.0 51.98
+38.55 1020.0 51.98
+50.14 1020.0 51.98
+34.86 1020.0 51.98
+35.38 1020.0 51.98
+41.52 1020.0 51.98
+42.28 1020.0 51.98
+45.11 1020.0 51.98
+51.01 1020.0 51.98
+43.6 1020.0 51.98
+50.12 1020.0 51.98
+55.07 1020.0 51.98
+43.24 1020.0 51.98
+49.84 1020.0 51.98
+44.42 1020.0 51.98
+58.77 1020.0 51.98
+35.32 1020.0 51.98
+34.83 1020.0 51.98
+51.72 1020.0 51.98
+52.39 1020.0 51.98
+57.54 1020.0 51.98
+50.37 1020.0 51.98
+51.75 1020.0 51.98
+
+
+[hadoop@dbsl-10 31446_12]$ nano WeatherDataAverage.java
+import java.io.IOException;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.FloatWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+
+public class WeatherDataAverage {
+
+    public static class TokenizerMapper extends Mapper<Object, Text, Text, FloatWritable> {
+
+        private Text category = new Text();
+        private FloatWritable temperature = new FloatWritable();
+        private FloatWritable windSpeed = new FloatWritable();
+        private FloatWritable dewPoint = new FloatWritable();
+
+        public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
+            String[] cols = value.toString().split(" ");
+            float temp = Float.parseFloat(cols[0]);
+            float wind = Float.parseFloat(cols[1]);
+            float dew = Float.parseFloat(cols[2]);
+
+            category.set("Temperature");
+            temperature.set(temp);
+            context.write(category, temperature);
+
+            category.set("WindSpeed");
+            windSpeed.set(wind);
+            context.write(category, windSpeed);
+
+            category.set("DewPoint");
+            dewPoint.set(dew);
+            context.write(category, dewPoint);
+        }
+    }
+
+    public static class FloatAverageReducer extends Reducer<Text, FloatWritable, Text, FloatWritable> {
+        private FloatWritable result = new FloatWritable();
+
+        public void reduce(Text key, Iterable<FloatWritable> values, Context context)
+                throws IOException, InterruptedException {
+            float sum = 0;
+            int count = 0;
+            for (FloatWritable a : values){sum += a.get();count++;}
+            float avg = sum / count;
+            result.set(avg);
+            context.write(key, result);
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+        Configuration conf = new Configuration();
+        Job job = Job.getInstance(conf, "weather data average");
+        job.setJarByClass(WeatherDataAverage.class);
+        job.setMapperClass(TokenizerMapper.class);
+        job.setReducerClass(FloatAverageReducer.class);
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(FloatWritable.class);
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(FloatWritable.class);
+        job.setInputFormatClass(TextInputFormat.class);
+        job.setOutputFormatClass(TextOutputFormat.class);
+        TextInputFormat.addInputPath(job, new Path(args[0]));
+        TextOutputFormat.setOutputPath(job, new Path(args[1]));
+        System.exit(job.waitForCompletion(true) ? 0 : 1);
+    }
+}
+
+
+[hadoop@dbsl-10 31446_12]$ javac -classpath `hadoop classpath` WeatherDataAverage.java
+
+
+[hadoop@dbsl-10 31446_12]$ jar cf WeatherDataAverage.jar WeatherDataAverage*.class
+
+
+[hadoop@dbsl-10 31446_12]$ ls
+ input.txt                                       WeatherDataAverage.class
+'WeatherDataAverage$FloatAverageReducer.class'   WeatherDataAverage.jar
+'WeatherDataAverage$TokenizerMapper.class'       WeatherDataAverage.java
+
+
+[hadoop@dbsl-10 31446_12]$ start-dfs.sh
+Starting namenodes on [localhost]
+localhost: namenode is running as process 11891.  Stop it first and ensure /tmp/hadoop-hadoop-namenode.pid file is empty before retry.
+Starting datanodes
+localhost: datanode is running as process 12113.  Stop it first and ensure /tmp/hadoop-hadoop-datanode.pid file is empty before retry.
+Starting secondary namenodes [dbsl-10]
+dbsl-10: secondarynamenode is running as process 12366.  Stop it first and ensure /tmp/hadoop-hadoop-secondarynamenode.pid file is empty before retry.
+2026-04-06 13:01:21,231 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+
+
+[hadoop@dbsl-10 31446_12]$ start-yarn.sh
+Starting resourcemanager
+resourcemanager is running as process 5445.  Stop it first and ensure /tmp/hadoop-hadoop-resourcemanager.pid file is empty before retry.
+Starting nodemanagers
+localhost: nodemanager is running as process 5598.  Stop it first and ensure /tmp/hadoop-hadoop-nodemanager.pid file is empty before retry.
+
+
+[hadoop@dbsl-10 31446_12]$ jps
+12113 DataNode
+11891 NameNode
+5445 ResourceManager
+19166 Jps
+12366 SecondaryNameNode
+5598 NodeManager
+
+ 
+[hadoop@dbsl-10 31446_12]$ hdfs mkdir hdfs://localhost:9000/
+mkdir /: file already exists
+
+
+[hadoop@dbsl-10 31446_12]$ hdfs mkdir hdfs://localhost:9000/31446_12
+
+
+[hadoop@dbsl-10 31446_12]$ hdfs mkdir hdfs://localhost:9000/31446_12/input
+
+
+[hadoop@dbsl-10 31446_12]$ hdfs put input.txt hdfs://localhost:9000/31446_12/input
+
+
+[hadoop@dbsl-10 31446_12]$ hadoop jar WeatherDataAverage.jar WeatherDataAverage /31446_12/input /31446_12/output
+2026-04-06 13:03:36,287 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2026-04-06 13:03:36,760 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at localhost/127.0.0.1:8032
+2026-04-06 13:03:36,987 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+2026-04-06 13:03:37,070 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/hadoop/.staging/job_1775459442052_0007
+2026-04-06 13:03:37,502 INFO input.FileInputFormat: Total input files to process : 1
+2026-04-06 13:03:37,853 INFO mapreduce.JobSubmitter: number of splits:1
+2026-04-06 13:03:38,136 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1775459442052_0007
+2026-04-06 13:03:38,136 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2026-04-06 13:03:38,269 INFO conf.Configuration: resource-types.xml not found
+2026-04-06 13:03:38,269 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2026-04-06 13:03:38,309 INFO impl.YarnClientImpl: Submitted application application_1775459442052_0007
+2026-04-06 13:03:38,330 INFO mapreduce.Job: The url to track the job: http://dbsl-10:8088/proxy/application_1775459442052_0007/
+2026-04-06 13:03:38,330 INFO mapreduce.Job: Running job: job_1775459442052_0007
+2026-04-06 13:03:43,411 INFO mapreduce.Job: Job job_1775459442052_0007 running in uber mode : false
+2026-04-06 13:03:43,412 INFO mapreduce.Job:  map 0% reduce 0%
+2026-04-06 13:03:47,579 INFO mapreduce.Job:  map 100% reduce 0%
+2026-04-06 13:03:52,617 INFO mapreduce.Job:  map 100% reduce 100%
+2026-04-06 13:03:53,629 INFO mapreduce.Job: Job job_1775459442052_0007 completed successfully
+2026-04-06 13:03:53,737 INFO mapreduce.Job: Counters: 54
+	File System Counters
+		FILE: Number of bytes read=4710
+		FILE: Number of bytes written=630689
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=1881
+		HDFS: Number of bytes written=60
+		HDFS: Number of read operations=8
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+		HDFS: Number of bytes read erasure-coded=0
+	Job Counters 
+		Launched map tasks=1
+		Launched reduce tasks=1
+		Data-local map tasks=1
+		Total time spent by all maps in occupied slots (ms)=1820
+		Total time spent by all reduces in occupied slots (ms)=2075
+		Total time spent by all map tasks (ms)=1820
+		Total time spent by all reduce tasks (ms)=2075
+		Total vcore-milliseconds taken by all map tasks=1820
+		Total vcore-milliseconds taken by all reduce tasks=2075
+		Total megabyte-milliseconds taken by all map tasks=1863680
+		Total megabyte-milliseconds taken by all reduce tasks=2124800
+	Map-Reduce Framework
+		Map input records=96
+		Map output records=288
+		Map output bytes=4128
+		Map output materialized bytes=4710
+		Input split bytes=111
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=3
+		Reduce shuffle bytes=4710
+		Reduce input records=288
+		Reduce output records=3
+		Spilled Records=576
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=38
+		CPU time spent (ms)=1070
+		Physical memory (bytes) snapshot=443916288
+		Virtual memory (bytes) snapshot=5503062016
+		Total committed heap usage (bytes)=217055232
+		Peak Map Physical memory (bytes)=256888832
+		Peak Map Virtual memory (bytes)=2748841984
+		Peak Reduce Physical memory (bytes)=187027456
+		Peak Reduce Virtual memory (bytes)=2754220032
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=1770
+	File Output Format Counters 
+		Bytes Written=60
+
+
+[hadoop@dbsl-10 31446_12]$ hdfs ls hdfs://localhost:9000/31446_12/output
+_SUCCESS
+part-r-00000
+
+
+[hadoop@dbsl-10 31446_12]$ hdfs cat hdfs://localhost:9000/31446_12/output/part-r-00000
+DewPoint	59.99005
+Temperature	53.58261
+WindSpeed	1009.55023
+
+
